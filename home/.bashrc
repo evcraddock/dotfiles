@@ -8,6 +8,7 @@ case $- in
       *) return;;
 esac
 
+printf '\nhomeshick --quiet refresh' >> $HOME/.bashrc
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -148,3 +149,5 @@ source "$HOME/.env"
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+
+homeshick --quiet refresh
