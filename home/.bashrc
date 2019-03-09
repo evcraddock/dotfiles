@@ -140,6 +140,10 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
 
+if [ -f ~/.bash_local ]; then
+  . ~/.bash_local
+fi
+
 source "$HOME/.env"
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
