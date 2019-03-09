@@ -136,7 +136,6 @@ export NVM_DIR="$HOME/.nvm"
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [ -f /home/erik/.nvm/versions/node/v8.11.4/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.bash ] && . /home/erik/.nvm/versions/node/v8.11.4/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.bash
-
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
@@ -150,4 +149,7 @@ source "$HOME/.env"
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 
+homeshick --quiet refresh
+
+homeshick --quiet refresh
 homeshick --quiet refresh
