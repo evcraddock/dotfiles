@@ -23,6 +23,9 @@ avakhov/vim-yaml
 leafgarland/typescript-vim
 editorconfig/editorconfig-vim
 lifepillar/vim-solarized8
+Shougo/vimproc.vim
+vim-js-pretty-template
+Quramy/tsuquyomi
 "
 
 function usage() {
