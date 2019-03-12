@@ -93,15 +93,15 @@ function install_node() {
 }
 
 function install_golang() {
-  if [ ! -d "$HOME/.go" ] && [ ! -d "$HOME/go" ]; then
+  if [ ! -d "$HOME/.go" ] && [ ! -d "$HOME/code" ]; then
     wget -q "https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz" -O /tmp/go.tar.gz
     tar -C "$HOME" -xzf /tmp/go.tar.gz
-    mv "$HOME/go" "$HOME/.go"
+    mv "$HOME/code" "$HOME/.go"
     {
       echo '# GoLang'
       echo 'export GOROOT=$HOME/.go'
       echo 'export PATH=$PATH:$GOROOT/bin'
-      echo 'export GOPATH=$HOME/go'
+      echo 'export GOPATH=$HOME/code'
       echo 'export PATH=$PATH:$GOPATH/bin'
     } >> "$HOME/.bash_local"
     mkdir -p $HOME/go/{src,pkg,bin}
