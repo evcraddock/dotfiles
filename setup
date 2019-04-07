@@ -169,6 +169,14 @@ function install_uiapps() {
     echo "BROWSER=$(which google-chrome)" >> ~/.bash_local
   fi
 
+  #typora
+  if ! _has typora; then
+	wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
+	sudo add-apt-repository 'deb https://typora.io/linux ./'
+	sudo apt-get update
+	sudo apt-get install typora
+  fi
+
   # slack
   if ! _has slack; then
     sudo snap install slack --classic
