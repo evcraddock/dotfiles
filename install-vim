@@ -3,28 +3,38 @@
 VIM_PLUGINS="
 tpope/vim-fugitive
 elzr/vim-json
+ctrlpvim/ctrlp.vim
 fatih/vim-go
+vim-airline/vim-airline
+vim-airline/vim-airline-themes
+elzr/vim-json
+#vim-syntastic/syntastic
+airblade/vim-gitgutter
 avakhov/vim-yaml
 leafgarland/typescript-vim
 editorconfig/editorconfig-vim
 lifepillar/vim-solarized8
-Shougo/vimproc.vim
 vim-js-pretty-template
 hashivim/vim-terraform
-valloric/youcompleteme
 Quramy/tsuquyomi
 scrooloose/nerdtree
 scrooloose/nerdcommenter
+Xuyuanp/nerdtree-git-plugin
 "
 
 if ! $(dpkg -s vim &> /dev/null); then
     sudo DEBIAN_FRONTEND=noninteractive apt-get install --qq -y vim 
 fi
 
+mkdir -p ~/.vim/autoload ~/.vim/bundle
+# make sure we have pathogen
+if [ ! -e ~/.vim/autoload/pathogen.vim ]; then
+  curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+fi
+
 for plugin in $VIM_PLUGINS; do
   plugin_name="${plugin##*/}"
 
-  echo
   if [ ! -d $HOME/.vim/bundle/$plugin_name ]; then
     echo "VIM-PLUGINS: $plugin not found. Installing"
     git clone --recurse-submodules --depth=1 "https://github.com/$plugin" "$HOME/.vim/bundle/$plugin_name"

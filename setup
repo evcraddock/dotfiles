@@ -15,19 +15,6 @@ vim
 tilix
 "
 
-DEFAULT_VIM_PLUGINS="
-tpope/vim-fugitive
-elzr/vim-json
-fatih/vim-go
-avakhov/vim-yaml
-leafgarland/typescript-vim
-editorconfig/editorconfig-vim
-lifepillar/vim-solarized8
-Shougo/vimproc.vim
-vim-js-pretty-template
-Quramy/tsuquyomi
-"
-
 function usage() {
   echo "Usage: init [OPTION]
   -f          full (install everything)
@@ -55,20 +42,7 @@ function install_apt_packages() {
 }
 
 function install_vim_plugins() {
-  mkdir -p ~/.vim/autoload ~/.vim/bundle
-  # make sure we have pathogen
-  if [ ! -e ~/.vim/autoload/pathogen.vim ]; then
-    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-  fi
-
-  # install all the plugins
-  for plugin in $@; do
-    local plugin_name="${plugin##*/}"
-
-    if [ ! -d $HOME/.vim/bundle/$plugin_name ]; then
-      git clone --depth=1 "https://github.com/$plugin" "$HOME/.vim/bundle/$plugin_name"
-    fi
-  done
+  ./install-vim
 }
 
 function install_node() {
