@@ -12,7 +12,10 @@ git
 jq
 wget
 vim
-tilix
+i3
+arandr
+fonts-font-awesome
+font-manager
 "
 
 function usage() {
