@@ -187,19 +187,19 @@ hide_edge_borders both
 bar {
 	position top
         status_command i3status
-#	status_command exec /home/erik/code/bin/statusbar
-#	fontprovider.Load("/home/erik/.local/share/fonts")
-#	font pango: DejaVu Sans Mono 13
-	colors {
-		background $bg-color
+	status_command exec /home/erik/code/bin/statusbar
+	fontprovider.Load("/home/erik/.fonts")
+	font pango: DejaVu Sans Mono 13
+#	colors {
+#		background $bg-color
 #		#			border			background		text
-		focused_workspace	$bg-color		$bg-color		$text-color
-		inactive_workspace	$inactive-bg-color	$inactive-bg-color	$inactive-text-color
-		urgent_workspace	$urgent-bg-color	$urget-bg-color		$text-color
-	}
+#		focused_workspace	$bg-color		$bg-color		$text-color
+#		inactive_workspace	$inactive-bg-color	$inactive-bg-color	$inactive-text-color
+#		urgent_workspace	$urgent-bg-color	$urget-bg-color		$text-color
+#	}
 }
 
-exec_always xrandr --output HDMI-2 --off --output HDMI-1 --off --output DP-1 --off --output eDP-1 --primary --mode 2160x1440 --pos 200x1440 --rotate normal --output DP-2 --mode 2560x1440 --pos 0x0 --rotate normal
+exec_always xrandr --output DP-1 --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-1 --primary --mode 1920x1080 --pos 248x1440 --rotate normal --output DP-2 --off
 
 # Pulse Audio controls
 # bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume

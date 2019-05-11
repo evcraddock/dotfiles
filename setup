@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 TMP_FILE_PREFIX=${TMPDIR:-/tmp}/prog.$$
-GOLANG_VERSION="1.10.3"
+GOLANG_VERSION="1.12.5"
 PYTHON_VERSION="3.6.6"
 
 DEFAULT_APT_PACKAGES="
@@ -16,6 +16,12 @@ i3
 arandr
 fonts-font-awesome
 font-manager
+rofi
+pkg-config
+libasound2-dev
+libdrumstick-dev
+libavcodec-extra
+ranger
 "
 
 function usage() {
@@ -76,7 +82,7 @@ function install_golang() {
   if [ ! -d "$HOME/.go" ] && [ ! -d "$HOME/code" ]; then
     wget -q "https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz" -O /tmp/go.tar.gz
     tar -C "$HOME" -xzf /tmp/go.tar.gz
-    mv "$HOME/code" "$HOME/.go"
+    mv "$HOME/go" "$HOME/.go"
     {
       echo '# GoLang'
       echo 'export GOROOT=$HOME/.go'
@@ -84,7 +90,7 @@ function install_golang() {
       echo 'export GOPATH=$HOME/code'
       echo 'export PATH=$PATH:$GOPATH/bin'
     } >> "$HOME/.bash_local"
-    mkdir -p $HOME/go/{src,pkg,bin}
+    mkdir -p $HOME/code/{src,pkg,bin}
     rm -f /tmp/go.tar.gz
   fi
 
@@ -274,6 +280,7 @@ function main() {
   install_vim_plugins "${DEFAULT_VIM_PLUGINS}"
   install_dotfiles
 
+  ./install-statusbar
 
   exit 0
 }

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+GITHUB_PACKAGES="
+https://github.com/FortAwesome/Font-Awesome
+https://github.com/google/material-design-icons
+https://github.com/Templarian/MaterialDesign-Webfont
+https://github.com/FortAwesome/Font-Awesome
+https://github.com/stephenhutchings/typicons.font
+"
+
+function install_github_packages() {
+   mkdir -p "${GITHUB_PATH}"/fonts
+   for git_pkg in $GITHUB_PACKAGES; do 
+      pushd $GITHUB_PATH/fonts
+         $(git clone $git_pkg)
+      popd
+   done
+}
+
+if [[ ! -d "${GITHUB_PATH}"/evcraddock ]]; then
+   mkdir -p "${GITHUB_PATH}"/evcraddock
+fi
+
+pushd ${GITHUB_PATH}/evcraddock
+   if [[ ! -d statusbar ]]; then
+      git clone https://github.com/evcraddock/statusbar
+   fi
+   go build -o $GOPATH/bin/statusbar statusbar/main.go
+   echo "Installed the statusbar"
+popd
+
+install_github_packages
