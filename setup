@@ -22,6 +22,7 @@ libasound2-dev
 libdrumstick-dev
 libavcodec-extra
 ranger
+rxvt
 "
 
 function usage() {
@@ -39,8 +40,10 @@ function _has() {
 }
 
 function install_apt_packages() {
+  echo "Installing apt packages"
   for apt_pkg in $@; do
     if ! $(dpkg -s $apt_pkg &> /dev/null); then
+      echo "Installing $apt_pkg"
       sudo DEBIAN_FRONTEND=noninteractive apt-get install -qq -y $apt_pkg
     fi
   done
@@ -55,13 +58,15 @@ function install_vim_plugins() {
 }
 
 function install_node() {
+  echo "Installing Node"
   if [ -f $HOME/.nvm/nvm.sh ]; then
     source $HOME/.nvm/nvm.sh
   else
+    mkdir $HOME/.nvm
     # Install the latest version of NVM
-    LATEST_NVM=$(curl -s https://api.github.com/repos/creationix/nvm/releases/latest | jq -r '.tag_name')
-    curl -LSs https://raw.githubusercontent.com/creationix/nvm/$LATEST_NVM/install.sh | bash
-    # Add NVM to bash_local so it'll work in the shell
+    LATEST_NVM=$(curl -s  https://api.github.com/repositories/612230/releases/latest | jq -r '.tag_name')
+    echo "https://raw.githubusercontent.com/creationix/nvm/$LATEST_NVM/install.sh"
+    curl -LSs https://raw.githubusercontent.com/creationix/nvm/$LATEST_NVM/install.sh | bash # Add NVM to bash_local so it'll work in the shell
     echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bash_local
     echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.bash_local
     # load NVM so we can use it to install node
