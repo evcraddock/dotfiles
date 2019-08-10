@@ -182,12 +182,12 @@ client.unfocused	$inactive-bg-color	$inactive-bg-color 	$inactive-text-color	#00
 client.focused_inactive	$inactive-bg-color	$inactive-bg-color 	$inactive-text-color	#000000
 client.urgent		$urgent-bg-color	$urgent-bg-color	$text-color		#000000
 
-hide_edge_borders both
+# hide_edge_borders both
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
 	position top
-        status_command i3status
+#        status_command i3status
 	status_command exec /home/erik/code/bin/statusbar
 	fontprovider.Load("/home/erik/.fonts")
 	font pango: DejaVu Sans Mono 13
@@ -199,17 +199,22 @@ bar {
 #		urgent_workspace	$urgent-bg-color	$urget-bg-color		$text-color
 #	}
 }
-
-exec_always xrandr --output DP-1 --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-1 --primary --mode 1920x1080 --pos 248x1440 --rotate normal --output DP-2 --off
-exec slack
+# exec_always xrandr --output DP-1 --primary --mode 2560x1440 --pos 2560x0 --rotate normal --output eDP-1 --mode 1920x1080 --pos 2736x1440 --rotate normal --output DP-2 --mode 2560x1440 --pos 0x0 --rotate normal
+#exec ~/.screenlayout/placement.sh
+#exec slack
 
 # Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+# Lower Volume
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mute 
+# Toggle muting
 # bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym Shift_L+KP_Add exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+#bindsym Shift_L+KP_Add exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 # bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym Shift_L+KP_Subtract exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+#bindsym Shift_L+KP_Subtract exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 # bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-bindsym Shift_L+KP_Enter exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+# bindsym Shift_L+KP_Enter exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
@@ -219,10 +224,11 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 #bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioStop exec playerctl stop
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+#bindsym XF86AudioPlay exec playerctl play
+#bindsym XF86AudioPause exec playerctl pause
+#bindsym XF86AudioStop exec playerctl stop
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioPrev exec playerctl previous
 
 exec synergy
+exec autocutsel
