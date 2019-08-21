@@ -54,7 +54,10 @@ function install_apt_packages() {
 }
 
 function install_vim_plugins() {
-  ./install-vim
+   if ! $(dpkg -s vim &> /dev/null); then
+      sudo DEBIAN_FRONTEND=noninteractive apt-get install --qq -y vim 
+   fi
+   ./install-vim-plugins
 }
 
 function install_node() {

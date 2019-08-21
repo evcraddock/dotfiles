@@ -22,10 +22,6 @@ scrooloose/nerdcommenter
 Xuyuanp/nerdtree-git-plugin
 "
 
-if ! $(dpkg -s vim &> /dev/null); then
-    sudo DEBIAN_FRONTEND=noninteractive apt-get install --qq -y vim 
-fi
-
 mkdir -p ~/.vim/autoload ~/.vim/bundle
 # make sure we have pathogen
 if [ ! -e ~/.vim/autoload/pathogen.vim ]; then
