@@ -8,18 +8,18 @@ fatih/vim-go
 vim-airline/vim-airline
 vim-airline/vim-airline-themes
 elzr/vim-json
-#vim-syntastic/syntastic
 airblade/vim-gitgutter
 avakhov/vim-yaml
 leafgarland/typescript-vim
 editorconfig/editorconfig-vim
 lifepillar/vim-solarized8
-vim-js-pretty-template
 hashivim/vim-terraform
 Quramy/tsuquyomi
 scrooloose/nerdtree
 scrooloose/nerdcommenter
 Xuyuanp/nerdtree-git-plugin
+plasticboy/vim-markdown
+iamcco/markdown-preview.vim
 "
 
 mkdir -p ~/.vim/autoload ~/.vim/bundle
