@@ -20,6 +20,7 @@ scrooloose/nerdcommenter
 Xuyuanp/nerdtree-git-plugin
 plasticboy/vim-markdown
 iamcco/markdown-preview.vim
+ledger/vim-ledger
 "
 
 mkdir -p ~/.vim/autoload ~/.vim/bundle

@@ -119,6 +119,9 @@ source <(kubectl completion bash)
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export GITHUB_PATH="$HOME/code/src/github.com"
+export EDITOR=/usr/bin/vim
+export TERM=xterm-256color
+export TERMINAL="urxvt -e"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
@@ -150,3 +153,6 @@ source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 
 
+export GPG_TTY=$(tty)
+# export MOZ_ENABLE_WAYLAND=1
+# setxkbmap -option caps:swapescape

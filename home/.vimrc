@@ -19,6 +19,21 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 vmap <C-c> :<Esc>`>a<CR><Esc>mx`<i<CR><Esc>my'xk$v'y!xclip -selection c<CR>u
 map <Insert> :set paste<CR>i<CR><CR><Esc>k:.!xclip -o<CR>JxkJx:set nopaste<CR>
+map <F6> :NERDTreeToggle<CR>
+map <F5> :MarkdownPreview<CR>
 
 set spell spelllang=en_us
 let g:vim_markdown_folding_disabled = 1
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 1
+
+" For ledger
+au BufNewFile,BufRead *.ldg,*.ledger setf ledger | comp ledger
+let g:ledger_maxwidth = 120
+let g:ledger_fold_blanks = 1
+function LedgerSort()
+    :%! ledger -f - print --sort 'date, amount'
+    :%LedgerAlign
+endfunction
+command LedgerSort call LedgerSort()
