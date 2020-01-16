@@ -16,7 +16,6 @@ i3
 arandr
 fonts-font-awesome
 font-manager
-rofi
 pkg-config
 libasound2-dev
 libdrumstick-dev
@@ -152,43 +151,46 @@ function install_uiapps() {
   fi
 
   # google chrome
-  if ! _has google-chrome; then
-    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-    echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
-    sudo apt-get update
-    sudo apt-get install -y google-chrome-stable
-    echo "BROWSER=$(which google-chrome)" >> ~/.bash_local
-  fi
-
-  #typora
-  if ! _has typora; then
-	wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
-	sudo add-apt-repository 'deb https://typora.io/linux ./'
-	sudo apt-get update
-	sudo apt-get install typora
-  fi
+#  if ! _has google-chrome; then
+#    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+#    echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+#    sudo apt-get update
+#    sudo apt-get install -y google-chrome-stable
+#    echo "BROWSER=$(which google-chrome)" >> ~/.bash_local
+#  fi
+#
+#  #typora
+#  if ! _has typora; then
+#	wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
+#	sudo add-apt-repository 'deb https://typora.io/linux ./'
+#	sudo apt-get update
+#	sudo apt-get install typora
+#  fi
 
   # slack
-  if ! _has slack; then
-    sudo snap install slack --classic
-  fi
-
-  # spotify
-  if ! _has spotify; then
-    sudo snap install spotify
-  fi
+#  if ! _has slack; then
+#    sudo snap install slack --classic
+#  fi
+#
+#  # spotify
+#  if ! _has spotify; then
+#    sudo snap install spotify
+#  fi
 }
 
 function install_vscode() {
   if ! _has code; then
-    # set up the microsoft repo
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+   # set up the microsoft repo
+   # curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+   # sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+   # sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+
+    wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
+    sudo apt-add-repository 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main'
 
     # install code
     sudo apt-get update
-    sudo apt-get install -y code
+    sudo apt-get install -y codium
 
     # install all the extensions
     VSCODE_EXTENSIONS="

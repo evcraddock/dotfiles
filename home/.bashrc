@@ -153,6 +153,11 @@ source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 
 
-export GPG_TTY=$(tty)
+export GPG_TTY="$(tty)"
+# export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+# gpg-connect-agent updatestartuptty /bye > /dev/null
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
+
 # export MOZ_ENABLE_WAYLAND=1
 # setxkbmap -option caps:swapescape
