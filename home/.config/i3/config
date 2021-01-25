@@ -201,3 +201,4 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 
 exec synergy
 exec autocutsel
+exec remind -z -k'notify-send %s &' ~/.reminders &

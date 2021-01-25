@@ -20,8 +20,11 @@ pkg-config
 libasound2-dev
 libdrumstick-dev
 libavcodec-extra
-ranger
 rxvt
+tmux
+chromium
+brave-browser
+firefox
 "
 
 function usage() {
@@ -92,7 +95,7 @@ function install_golang() {
     mv "$HOME/go" "$HOME/.go"
     {
       echo '# GoLang'
-      echo 'export GOROOT=$HOME/.go'
+      echo 'export GOROOT=$HOME/code'
       echo 'export PATH=$PATH:$GOROOT/bin'
       echo 'export GOPATH=$HOME/code'
       echo 'export PATH=$PATH:$GOPATH/bin'
@@ -100,10 +103,6 @@ function install_golang() {
     mkdir -p $HOME/code/{src,pkg,bin}
     rm -f /tmp/go.tar.gz
   fi
-
-  # if _has go && ! _has drive; then
-  #   go get -u github.com/odeke-em/drive/cmd/drive
-  # fi
 }
 
 function install_python() {
@@ -149,33 +148,6 @@ function install_uiapps() {
       sudo apt-get install -y nvidia-driver-390
     fi
   fi
-
-  # google chrome
-#  if ! _has google-chrome; then
-#    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-#    echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
-#    sudo apt-get update
-#    sudo apt-get install -y google-chrome-stable
-#    echo "BROWSER=$(which google-chrome)" >> ~/.bash_local
-#  fi
-#
-#  #typora
-#  if ! _has typora; then
-#	wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
-#	sudo add-apt-repository 'deb https://typora.io/linux ./'
-#	sudo apt-get update
-#	sudo apt-get install typora
-#  fi
-
-  # slack
-#  if ! _has slack; then
-#    sudo snap install slack --classic
-#  fi
-#
-#  # spotify
-#  if ! _has spotify; then
-#    sudo snap install spotify
-#  fi
 }
 
 function install_vscode() {
@@ -202,7 +174,6 @@ function install_vscode() {
     ms-vscode.vscode-typescript-tslint-plugin
     esbenp.prettier-vscode
     mikestead.dotenv
-    tht13.python
     vscodevim.vim
     shd101wyy.markdown-preview-enhanced
     "
@@ -216,6 +187,12 @@ function install_docker() {
   if ! _has docker; then
     curl -o- https://get.docker.com | bash
     sudo usermod -aG docker $(whoami)
+  fi
+}
+
+function install_rust() {
+  if ! _has rust; then
+     curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | bash   
   fi
 }
 
@@ -248,7 +225,7 @@ function install_devtools() {
 }
 
 function main() {
-  PACKAGES="node golang python dotfiles devtools"
+  PACKAGES="node golang rust python dotfiles devtools"
   local -r OPTS=':hfm'
   while builtin getopts ${OPTS} opt "${@}"; do
 

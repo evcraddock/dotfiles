@@ -159,5 +159,8 @@ export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent
 
+export OPENER=run-mailcap-rs
+
 # export MOZ_ENABLE_WAYLAND=1
 # setxkbmap -option caps:swapescape
+source "$HOME/.cargo/env"

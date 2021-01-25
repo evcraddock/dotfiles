@@ -21,6 +21,8 @@ Xuyuanp/nerdtree-git-plugin
 plasticboy/vim-markdown
 iamcco/markdown-preview.vim
 ledger/vim-ledger
+rust-lang/rust.vim
+racer-rust/vim-racer
 "
 
 mkdir -p ~/.vim/autoload ~/.vim/bundle
