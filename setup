@@ -26,6 +26,7 @@ chromium-browser
 brave-browser
 firefox
 imagemagick
+fzf
 "
 
 function usage() {
