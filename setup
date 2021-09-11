@@ -22,9 +22,10 @@ libdrumstick-dev
 libavcodec-extra
 rxvt
 tmux
-chromium
+chromium-browser
 brave-browser
 firefox
+imagemagick
 "
 
 function usage() {
@@ -153,16 +154,16 @@ function install_uiapps() {
 function install_vscode() {
   if ! _has code; then
    # set up the microsoft repo
-   # curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-   # sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-   # sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 
-    wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
-    sudo apt-add-repository 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main'
+   # wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
+   # sudo apt-add-repository 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main'
 
     # install code
     sudo apt-get update
-    sudo apt-get install -y codium
+    sudo apt-get install -y code
 
     # install all the extensions
     VSCODE_EXTENSIONS="
@@ -203,13 +204,13 @@ function install_devtools() {
   fi
 
   # gcloud cli
-  if ! _has gcloud; then
-    source /etc/lsb-release
-    export CLOUD_SDK_REPO="cloud-sdk-${DISTRIB_CODENAME}"
-    echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-    sudo apt-get update && sudo apt-get install -y google-cloud-sdk
-  fi
+  # if ! _has gcloud; then
+  #   source /etc/lsb-release
+  #   export CLOUD_SDK_REPO="cloud-sdk-${DISTRIB_CODENAME}"
+  #   echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+  #   curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+  #   sudo apt-get update && sudo apt-get install -y google-cloud-sdk
+  # fi
 
   # kubectl cli
   if ! _has kubectl; then
@@ -225,7 +226,7 @@ function install_devtools() {
 }
 
 function main() {
-  PACKAGES="node golang rust python dotfiles devtools"
+  PACKAGES="node rust python dotfiles devtools"
   local -r OPTS=':hfm'
   while builtin getopts ${OPTS} opt "${@}"; do
 

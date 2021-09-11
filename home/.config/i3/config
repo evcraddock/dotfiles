@@ -60,8 +60,12 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 bindsym $mod+p move workspace to output down
+bindsym $mod+Shift+greater move workspace to output right
+bindsym $mod+Shift+less move workspace to output left
 # focus the child container
 #bindsym $mod+d focus child
+
+bindsym $mod+q kill
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -156,8 +160,8 @@ client.urgent		$urgent-bg-color	$urgent-bg-color	$text-color		#000000
 # finds out, if available)
 bar {
 	position top
-#        status_command i3status
-	status_command exec /home/erik/code/bin/statusbar
+        status_command i3status
+#	status_command exec /home/erik/code/bin/statusbar
 	fontprovider.Load("/home/erik/.fonts")
 	font pango: DejaVu Sans Mono 13
 #	colors {
@@ -169,8 +173,9 @@ bar {
 #	}
 }
 #exec_always xrandr --output DP-1 --primary --mode 2560x1440 --pos 2560x0 --rotate normal --output eDP-1 --mode 1920x1080 --pos 2736x1440 --rotate normal --output DP-2 --mode 2560x1440 --pos 0x0 --rotate normal
-# exec ~/.screenlayout/placement.sh
+exec ~/.screenlayout/placement.sh
 #exec slack
+
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
@@ -200,5 +205,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 #bindsym XF86AudioPrev exec playerctl previous
 
 exec synergy
+exec ipfs daemon &
 exec autocutsel
 exec remind -z -k'notify-send %s &' ~/.reminders &
+exec xset -dpms s off

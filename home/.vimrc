@@ -3,7 +3,8 @@ set number
 
 execute pathogen#infect()
 syntax on
-filetype plugin indent on
+filetype plugin on
+filetype indent on
 let &t_Co=256
 colorscheme solarized8 
 
@@ -29,6 +30,11 @@ let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 1
 
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set noexpandtab
+
 " For ledger
 au BufNewFile,BufRead *.ldg,*.ledger setf ledger | comp ledger
 let g:ledger_maxwidth = 120
@@ -38,3 +44,5 @@ function LedgerSort()
     :%LedgerAlign
 endfunction
 command LedgerSort call LedgerSort()
+
+set rtp+='~/.fzf'

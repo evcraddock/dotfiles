@@ -23,6 +23,8 @@ iamcco/markdown-preview.vim
 ledger/vim-ledger
 rust-lang/rust.vim
 racer-rust/vim-racer
+junegunn/fzf
+christoomey/vim-tmux-navigator
 "
 
 mkdir -p ~/.vim/autoload ~/.vim/bundle

@@ -164,3 +164,10 @@ export OPENER=run-mailcap-rs
 # export MOZ_ENABLE_WAYLAND=1
 # setxkbmap -option caps:swapescape
 source "$HOME/.cargo/env"
+
+# Wasmer
+export WASMER_DIR="/home/erik/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.cargo/env"
