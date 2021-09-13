@@ -62,6 +62,8 @@ bindsym $mod+a focus parent
 bindsym $mod+p move workspace to output down
 bindsym $mod+Shift+greater move workspace to output right
 bindsym $mod+Shift+less move workspace to output left
+bindsym $mod+Shift+d move workspace to output down
+bindsym $mod+Shift+u move workspace to output up
 # focus the child container
 #bindsym $mod+d focus child
 
