@@ -3,18 +3,20 @@
 VIM_PLUGINS="
 tpope/vim-fugitive
 elzr/vim-json
-ctrlpvim/ctrlp.vim
 fatih/vim-go
 vim-airline/vim-airline
 vim-airline/vim-airline-themes
-elzr/vim-json
 airblade/vim-gitgutter
 avakhov/vim-yaml
 leafgarland/typescript-vim
+pangloss/vim-javascript
+peitalin/vim-jsx-typescript
+MaxMEllon/vim-jsx-pretty
+styled-components/vim-styled-components
+dense-analysis/ale
 editorconfig/editorconfig-vim
 lifepillar/vim-solarized8
 hashivim/vim-terraform
-Quramy/tsuquyomi
 scrooloose/nerdtree
 scrooloose/nerdcommenter
 Xuyuanp/nerdtree-git-plugin
@@ -25,6 +27,7 @@ rust-lang/rust.vim
 racer-rust/vim-racer
 junegunn/fzf
 christoomey/vim-tmux-navigator
+neoclide/coc.nvim
 "
 
 mkdir -p ~/.vim/autoload ~/.vim/bundle

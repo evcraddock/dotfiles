@@ -162,8 +162,8 @@ client.urgent		$urgent-bg-color	$urgent-bg-color	$text-color		#000000
 # finds out, if available)
 bar {
 	position top
-        status_command i3status
-#	status_command exec /home/erik/code/bin/statusbar
+       # status_command i3status
+		status_command exec /home/erik/code/bin/statusbar
 	fontprovider.Load("/home/erik/.fonts")
 	font pango: DejaVu Sans Mono 13
 #	colors {

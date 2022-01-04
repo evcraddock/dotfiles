@@ -120,7 +120,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export GITHUB_PATH="$HOME/code/src/github.com"
 export EDITOR=/usr/bin/vim
-export TERM=xterm-256color
+export TERM=tmux-256color
 export TERMINAL="urxvt -e"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
