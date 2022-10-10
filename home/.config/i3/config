@@ -3,7 +3,8 @@ font pango: SFNS Display 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -206,7 +207,8 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 #bindsym XF86AudioNext exec playerctl next
 #bindsym XF86AudioPrev exec playerctl previous
 
-exec synergy
+# exec synergy
+exec barrier
 exec ipfs daemon &
 exec autocutsel
 exec remind -z -k'notify-send %s &' ~/.reminders &
